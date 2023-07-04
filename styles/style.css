@@ -1,3 +1,14 @@
+/* general styling */
+.hidden {
+  display: none !important;
+}
+
+body {
+  font-family: 'Caprasimo', cursive;
+}
+
+
+
 /* logo styling */
 
 .logo {
@@ -35,7 +46,39 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+
   }
 
-/* header */
+/* splash-screen */
+#splash-screen  {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
 
+#player-select {
+  margin-bottom: 1rem;
+}
+/* buttons */
+.btn {
+    width: 150px;
+    margin: auto;
+    padding: 8px 0;
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+  }
+  
+#play-btn,
+#rules-btn {
+  font-family: 'Caprasimo', cursive;
+}
+#play-btn{
+  margin-bottom: 1rem;
+}
+/* input */
+#name-input {
+  margin-bottom: 2rem;
+  text-align: center;
+}

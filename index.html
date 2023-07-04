@@ -18,14 +18,60 @@
     <script src="scripts/script.js" defer></script>
 </head>
 <body>
-    <header>
+    <div id="game-container">
+        <div id="splash-screen">
+        <!-- logo -->
         <a href="index.html"><h1 class="logo">basketbolt</h1></a>
-        <button type="button" class="btn btn-light">Play/Pause</button>
-    </header>
-    <main>
+        <!-- name input -->
+        <input aria-label="player input" type="text" id="name-input" placeholder="Player! Enter your name">
+        <!-- player select -->
+        <label for="player-select">Select a player:</label>
+          <select name="player" id="player-select">
+            <option value="nash">Steve Nash</option>
+            <option value="curry">Steph Curry</option>
+            <option value="lebron">LeBron James</option>
+            <option value="shaq">Shaquille O'Neal</option>
+          </select>
+        <!-- play btn -->
+        <button id= "play-btn" type="button" class="btn btn-light btn">Let's Play</button>
+        <!-- help btn -->
+        <button id= "rules-btn" type="button" class="btn btn-warning btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Rules
+        </button>
+        <!-- modal code -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Rules of the Game</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Welcome to Basketbolt! <br>
 
-    </main>
+                  Rules of the game are simple: <br>
+                  Choose one of four NBA Legends<br>
+                  Choose your difficulty - the harder the difficulty, the better the score multiplier.<br>
+                  Start playing!<br>
+                    - Move NBA Player using your keyboard<br>
+                    - Score as many points as possible within the time limit<br>
+                    - Enjoy!<br>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- end modal code -->
+        </div>
+        <div class="hidden" id="game-screen">
 
+        </div>
+        <div class="hidden" id="game-over-screen">
+
+        </div>
+    </div>
 
 
 
