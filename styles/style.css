@@ -1,0 +1,41 @@
+/* logo styling */
+
+.logo {
+    font-family: 'Caprasimo', cursive;
+    color: rgb(255, 149, 0);
+    font-size: 5rem;
+    background-color: rgb(255, 255, 255);
+    padding: 3rem;
+    border-radius: 1rem;
+    border: .5rem solid darkorange;
+    transition: color 230ms cubic-bezier(0.1, 0.7, 1.0, 0.1);
+    -webkit-text-stroke-width: 2.5px ;
+    -webkit-text-stroke-color: rgb(186, 121, 1);
+
+}
+
+.logo:hover {
+    color: rgb(0, 0, 0);
+
+}
+
+a {
+    color: none;
+    text-decoration-line: none;
+}
+
+  /* body */
+
+body {
+    background-image: url("/media/hardwood.jpeg");
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+/* header */
+
