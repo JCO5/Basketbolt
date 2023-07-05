@@ -25,16 +25,40 @@
         <!-- name input -->
         <input aria-label="player input" type="text" id="name-input" placeholder="Player! Enter your name">
         <!-- player select -->
-        <label for="player-select">Select a player:</label>
-          <select name="player" id="player-select">
-            <option value="nash">Steve Nash</option>
-            <option value="curry">Steph Curry</option>
-            <option value="lebron">LeBron James</option>
-            <option value="shaq">Shaquille O'Neal</option>
-          </select>
+        <div class="radio-players">
+            <p>Select Player:</p>
+            <input type="radio" name="player" id="curry" value="curry">
+            <label for="curry">
+                <div>
+                    <img src="media/steph.jpg">
+                    <p>Stephen Curry</p>
+                </div>
+            </label>
+            <input type="radio" name="player" id="nash" value="nash">
+            <label for="nash">
+                <div>
+                    <img src="media/nash.jpg">
+                    <p>Steve Nash</p>
+                </div>
+            </label>
+            <input type="radio" name="player" id="lebron" value="lebron">
+            <label for="lebron">
+                <div>
+                    <img src="media/lebron.jpg">
+                    <p>Lebron James</p>
+                </div>
+            </label>
+            <input type="radio" name="player" id="shaq" value="shaq">
+            <label for="shaq">
+                <div>
+                    <img id="shaq-img" src="media/shaq.jpg">
+                    <p>Shaquille O'Neal</p>
+                </div>
+            </label>
+        </div>
         <!-- play btn -->
         <button id= "play-btn" type="button" class="btn btn-light btn">Let's Play</button>
-        <!-- help btn -->
+        <!-- rules btn -->
         <button id= "rules-btn" type="button" class="btn btn-warning btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Rules
         </button>

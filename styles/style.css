@@ -7,21 +7,19 @@ body {
   font-family: 'Caprasimo', cursive;
 }
 
-
-
 /* logo styling */
 
 .logo {
     font-family: 'Caprasimo', cursive;
     color: rgb(255, 149, 0);
     font-size: 5rem;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
     padding: 3rem;
     border-radius: 1rem;
     border: .5rem solid darkorange;
     transition: color 230ms cubic-bezier(0.1, 0.7, 1.0, 0.1);
     -webkit-text-stroke-width: 2.5px ;
-    -webkit-text-stroke-color: rgb(186, 121, 1);
+    -webkit-text-stroke-color: rgb(0, 0, 255);
 
 }
 
@@ -35,7 +33,7 @@ a {
     text-decoration-line: none;
 }
 
-  /* body */
+/* body */
 
 body {
     background-image: url("/media/hardwood.jpeg");
@@ -77,8 +75,44 @@ body {
 #play-btn{
   margin-bottom: 1rem;
 }
+#rules-btn{
+  margin-bottom: 2rem;
+}
 /* input */
 #name-input {
   margin-bottom: 2rem;
   text-align: center;
 }
+
+.radio-players {
+  margin-bottom: 1rem;
+}
+
+img {
+  border: 3px solid black;
+  width: 5rem;
+}
+#shaq-img {
+  width: 4.8rem;
+}
+input[type="radio"] {
+  display: none; /* Hide the default radio buttons */
+}
+
+label {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: darkorange;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+label:hover {
+  background-color: #ccc;
+}
+
+input[type="radio"]:checked + label {
+  background-color: #0099ff;
+  color: #fff;
+}
+
