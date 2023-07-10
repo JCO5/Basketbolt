@@ -1,118 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>basketbolt</title>
     <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap"
+      rel="stylesheet"
+    />
     <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
     <!-- style sheets -->
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/normalize.css" />
+    <link rel="stylesheet" href="styles/style.css" />
     <!-- javascript -->
     <script src="scripts/script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="game-container">
-        <div id="splash-screen">
+      <div id="splash-screen">
         <!-- logo -->
         <a href="index.html"><h1 class="logo">basketbolt</h1></a>
         <!-- name input -->
-        <input aria-label="player input" type="text" id="name-input" placeholder="Player! Enter your name">
+        <input
+          aria-label="player input"
+          type="text"
+          id="name-input"
+          placeholder="Player! Enter your name"
+        />
         <!-- player select -->
         <div class="radio-players">
-            <p>Select Player:</p>
-            <input type="radio" name="player" id="curry" value="curry">
-            <label for="curry">
-                <div>
-                    <img src="media/steph.jpg">
-                    <p>Stephen Curry</p>
-                </div>
-            </label>
-            <input type="radio" name="player" id="nash" value="nash">
-            <label for="nash">
-                <div>
-                    <img src="media/nash.jpg">
-                    <p>Steve Nash</p>
-                </div>
-            </label>
-            <input type="radio" name="player" id="lebron" value="lebron">
-            <label for="lebron">
-                <div>
-                    <img src="media/lebron.jpg">
-                    <p>Lebron James</p>
-                </div>
-            </label>
-            <input type="radio" name="player" id="shaq" value="shaq">
-            <label for="shaq">
-                <div>
-                    <img id="shaq-img" src="media/shaq.jpg">
-                    <p>Shaquille O'Neal</p>
-                </div>
-            </label>
+          <p>Select Player:</p>
+          <input type="radio" name="player" id="curry" value="curry" />
+          <label for="curry">
+            <div>
+              <img src="media/steph.jpg" />
+              <p>Stephen Curry</p>
+            </div>
+          </label>
+          <input type="radio" name="player" id="nash" value="nash" />
+          <label for="nash">
+            <div>
+              <img src="media/nash.jpg" />
+              <p>Steve Nash</p>
+            </div>
+          </label>
+          <input type="radio" name="player" id="lebron" value="lebron" />
+          <label for="lebron">
+            <div>
+              <img src="media/lebron.jpg" />
+              <p>Lebron James</p>
+            </div>
+          </label>
+          <input type="radio" name="player" id="shaq" value="shaq" />
+          <label for="shaq">
+            <div>
+              <img id="shaq-img" src="media/shaq.jpg" />
+              <p>Shaquille O'Neal</p>
+            </div>
+          </label>
         </div>
         <!-- play btn -->
-        <button id= "play-btn" type="button" class="btn btn-light btn">Let's Play</button>
+        <button id="play-btn" type="button" class="btn btn-light btn">
+          Let's Play
+        </button>
         <!-- rules btn -->
-        <button id= "rules-btn" type="button" class="btn btn-warning btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Rules
+        <button
+          id="rules-btn"
+          type="button"
+          class="btn btn-warning btn"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Rules
         </button>
         <!-- modal code -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Rules of the Game</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  Welcome to Basketbolt! <br>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Rules of the Game
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                Welcome to Basketbolt! <br />
 
-                  Rules of the game are simple: <br>
-                  Choose one of four NBA Legends<br>
-                  Choose your difficulty - the harder the difficulty, the better the score multiplier.<br>
-                  Start playing!<br>
-                    - Move NBA Player using your keyboard<br>
-                    - Score as many points as possible within the time limit<br>
-                    - Enjoy!<br>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+                Rules of the game are simple: <br />
+                Choose one of four NBA Legends<br />
+                Choose your difficulty - the harder the difficulty, the better
+                the score multiplier.<br />
+                Start playing!<br />
+                - Move NBA Player using your keyboard<br />
+                - Score as many points as possible within the time limit<br />
+                - Enjoy!<br />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
+        </div>
         <!-- end modal code -->
-        </div>
-        <div class="hidden" id="game-screen">
-
-        </div>
-        <div class="hidden" id="game-over-screen">
-
-        </div>
+      </div>
+      <div class="hidden" id="game-screen"></div>
+      <div class="hidden" id="game-over-screen"></div>
     </div>
 
+    <canvas id="board"></canvas>
 
-
-
-
-
-
-
-    
-    
-    
-    
-    
     <!-- libraries -->
-        <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-        <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-</body>
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <!-- bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
