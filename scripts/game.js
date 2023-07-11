@@ -6,11 +6,13 @@ let boardWidth = 1000;
 let boardHeight = 800;
 let context;
 
-// PLAYER PADDLE SETTINGS
-// SET DIFFICULTIES
+// PLAYER PADDLE SETTINGS //
+// CHARACTER OBJECTS //
+// SET DIFFICULTIES //
+////////////////////////////
 let playerWidth = 150; //1000 for testing, 150 normal
 let playerHeight = 20;
-let playerVelocityX = 30;
+let playerVelocityX = 10; // start with 10
 let playerColor = "lightgreen";
 
 let player = {
@@ -22,51 +24,89 @@ let player = {
   color: playerColor,
 };
 
+// EASY BUT SLOW
 let shaq = {
+  // playerWidth + x needs to be updated together
+  // as well as playerHeight + x
   x: boardWidth / 2 - (playerWidth + 100) / 2,
-  y: boardHeight - (playerHeight + 100) - 5,
   width: playerWidth + 100,
-  height: playerHeight + 100,
-  velocityX: playerVelocityX - 5,
-  color: '#4249ce',
+  y: boardHeight - (playerHeight + 200) - 5,
+  height: playerHeight + 200,
+  velocityX: playerVelocityX + 10,
+  color: "#4249ce",
 };
 
+// MEDIUM 
 let lebron = {
-  x: boardWidth / 2 - (playerWidth + 80) / 2,
-  y: boardHeight - (playerHeight + 80) - 5,
-  width: playerWidth + 80,
-  height: playerHeight + 80,
+  // playerWidth + x needs to be updated together
+  // as well as playerHeight + x
+  x: boardWidth / 2 - (playerWidth + 50) / 2,
+  width: playerWidth + 50,
+  y: boardHeight - (playerHeight + 150) - 5,
+  height: playerHeight + 150,
+  velocityX: playerVelocityX + 40,
+  color: "#880016",
+  ballVelocityX: 4,
+  ballVelocityY: 9,
+};
+
+// PRETTY HARD 
+let curry = {
+    // playerWidth + x needs to be updated together
+    // as well as playerHeight + x
+    x: boardWidth / 2 - (playerWidth - 10) / 2,
+    width: playerWidth - 10,
+    y: boardHeight - (playerHeight + 80) - 5,
+    height: playerHeight + 80,
+    velocityX: playerVelocityX + 40,
+    color: "#ffc809",
+    ballVelocityX: 4,
+    ballVelocityY: 9,
+};
+
+// BIT EASIER THAN CURRY
+let nash = {
+  // playerWidth + x needs to be updated together
+  // as well as playerHeight + x
+  x: boardWidth / 2 - (playerWidth - 15) / 2,
+  width: playerWidth - 15,
+  y: boardHeight - (playerHeight + 120) - 5,
+  height: playerHeight + 120,
   velocityX: playerVelocityX + 50,
-  color: 'maroon',
+  color: "#5c3568",
 };
 
 
+// GAME OBJECT //
+/////////////////
 let game = {
-  resetPlayer : lebron,
-  activePlayer: {...lebron},
+  resetPlayer: shaq,
+  activePlayer: { ...shaq },
 };
 
-// game.activePlayer = game.activePlayer
 
-// BALL SETTINGS
-// SET DIFFICULTIES
+// BALL SETTINGS //
+// SET DIFFICULTIES //
+//////////////////////
 let ballWidth = 20;
 let ballHeight = 20;
-let ballVelocityX = -4; //15 for testing, 3 normal
+let ballVelocityX = -3; //15 for testing, 4 normal
 let ballVelocityY = 4; //10 for testing, 2 normal
 let ballColor = "orange";
 
 let ball = {
-  x: boardWidth / 2,
-  y: boardHeight / 2,
-  width: ballWidth,
-  height: ballHeight,
-  velocityX: ballVelocityX,
-  velocityY: ballVelocityY,
-  color: ballColor,
+    x: boardWidth / 2 - ballWidth / 2,
+    y: game.activePlayer.y - ballHeight,
+    width: ballWidth,
+    height: ballHeight,
+    velocityX: ballVelocityX,
+    velocityY: ballVelocityY,
+    color: ballColor,
 };
+let resetBall = {...ball}
 
 // BLOCK ARRAY SETTINGS //
+//////////////////////////
 let blocks = {
   blockStyle: "white",
   blockArray: [],
@@ -78,10 +118,11 @@ let blocks = {
   blockCount: 0,
   // BRICK ROWS STARTING POSITION //
   blockX: 10,
-  blockY: 65,
+  blockY: 90,
 };
 
 // GAME INITIAL STATES //
+/////////////////////////
 let score = 0;
 let gameOver = false;
 
@@ -109,14 +150,13 @@ window.onload = function () {
   createBlocks();
 };
 
-
 /* 
 UPDATE FUNCTION - DRAWING/REFRESHING CANVAS, DETECTING COLLISION,
 LEVEL PROGRESSION, AND DISPLAY SCORE
 */ //////////////////////////////////////////////////////////////
 function update() {
   // CONTROL FPS
-  const fps = 100;
+  const fps = 80;
   setTimeout(() => {
     requestAnimationFrame(update);
   }, 1000 / fps);
@@ -149,11 +189,13 @@ function update() {
     bottomCollision(ball, game.activePlayer)
   ) {
     ball.velocityY *= -1; // flip y direction up or down
+    ball.velocityX = (ball.velocityX + 1) * -1;
   } else if (
     leftCollision(ball, game.activePlayer) ||
     rightCollision(ball, game.activePlayer)
   ) {
     ball.velocityX *= -1; // flip x direction left or right
+    ball.velocityY *= -1;
   }
 
   // DETECT COLLISION WITH CANVAS EDGES
@@ -170,17 +212,23 @@ function update() {
     // display game over message in the center, set gameOver to true
     context.font = "bold 30px monospace, Verdana, sans-serif";
     let message1 = "G A M E O V E R";
-    let message2 = "Press Space to Restart";
+    let message2 = `Your Score: ${score}`;
+    let message3 = "Press Space to Restart";
     context.fillText(
       message1,
       boardWidth / 2 - context.measureText(message1).width / 2,
       boardHeight / 2
     );
-    context.font = "24px monospace, Verdana, sans-serif";
     context.fillText(
       message2,
       boardWidth / 2 - context.measureText(message2).width / 2,
       boardHeight / 2 + 35
+    );
+    context.font = "24px monospace, Verdana, sans-serif";
+    context.fillText(
+      message3,
+      boardWidth / 2 - context.measureText(message3).width / 2,
+      boardHeight / 2 + 70
     );
     gameOver = true;
   }
@@ -224,7 +272,6 @@ function update() {
   context.fillText(score, 20, 40);
 }
 
-
 // FUNCTION FOR CREATING BLOCKS //
 //////////////////////////////////
 function createBlocks() {
@@ -261,7 +308,7 @@ function movePlayer(e) {
   }
   if (e.code == "ArrowLeft") {
     // game.activePlayer.x -= game.activePlayer.velocityX;
-    let nextplayerX = game.activePlayer.x - game.activePlayer.velocityX
+    let nextplayerX = game.activePlayer.x - game.activePlayer.velocityX;
     if (!outOfBounds(nextplayerX)) {
       game.activePlayer.x = nextplayerX;
     }
@@ -277,7 +324,12 @@ function movePlayer(e) {
 // FUNCTION TO DETECT IF MOVING PIECES GO OUT OF BOUNDS //
 //////////////////////////////////////////////////////////
 function outOfBounds(xPosition) {
-  return xPosition < 0 || xPosition + game.activePlayer.width >= boardWidth;
+  // left bound || right bound
+  return (
+    xPosition <= 0 - game.activePlayer.velocityX + 10 ||
+    xPosition + game.activePlayer.width >=
+      boardWidth + (game.activePlayer.velocityX - 10)
+  );
 }
 
 // COLLISION DETECTION FUNCTIONS //
@@ -316,16 +368,8 @@ function rightCollision(ball, block) {
 ///////////////////////////////////////////////////////////////////////////
 function resetGame() {
   gameOver = false;
-  game.activePlayer = {...game.resetPlayer}
-  ball = {
-    x: boardWidth / 2,
-    y: boardHeight / 2,
-    width: ballWidth,
-    height: ballHeight,
-    velocityX: ballVelocityX,
-    velocityY: ballVelocityY,
-    color: ballColor,
-  };
+  game.activePlayer = { ...game.resetPlayer };
+  ball = {...resetBall}
   blocks.blockArray = [];
   blocks.blockRows = 3;
   score = 0;
