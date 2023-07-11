@@ -194,8 +194,8 @@ function update() {
     leftCollision(ball, game.activePlayer) ||
     rightCollision(ball, game.activePlayer)
   ) {
-    ball.velocityX *= -1; // flip x direction left or right
-    ball.velocityY *= -1;
+    ball.velocityX *= -2 + 2; // flip x direction left or right
+    ball.velocityY *= -2 + 2;
   }
 
   // DETECT COLLISION WITH CANVAS EDGES
