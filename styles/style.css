@@ -1,6 +1,6 @@
 /* general styling */
 .hidden {
-  display: none !important;
+  display: none;
 }
 
 body {
@@ -116,3 +116,12 @@ input[type="radio"]:checked + label {
   color: #fff;
 }
 
+/* GAME SCREEN */
+/* *********** */
+#board {
+  background-color: black;
+  border-top: 10px solid darkorange;
+  border-left: 10px solid darkorange;
+  border-right: 10px solid darkorange;
+  box-shadow: rgba(255, 135, 37, 0.658) 0px 22px 70px 4px;
+}
