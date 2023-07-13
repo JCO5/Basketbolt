@@ -24,52 +24,17 @@
 
 // game object
 const game = {
-    isRunning: false,
-    currentScreen: null,
-    // DOM variables
-    elems: {
-        startScreen: {
-            playerNameInput: document.getElementById("name-input"),
-            playBtn: document.getElementById("play-btn"),
-            rulesBtn: document.getElementById("rules-btn"),
-            playerSelect: document.getElementById("player-select"),
-        },
-        gameScreen: {
-          
-        },
-        gameOverScreen: {
-          
-        },
-
-        
-}};
-
-// player object
-const player = {
-    x: boardWidth / 2 - playerWidth / 2,
-    y: boardHeight- playerHeight - 5,
-    width: playerWidth,
-    height: playerHeight,
-    velocityX: playerVelocityX,
-    color: playerColor,
+  isRunning: false,
+  currentScreen: null,
+  // DOM variables
+  elems: {
+    startScreen: {
+      playerNameInput: document.getElementById("name-input"),
+      playBtn: document.getElementById("play-btn"),
+      rulesBtn: document.getElementById("rules-btn"),
+      playerSelect: document.getElementById("player-select"),
+    },
+    gameScreen: {},
+    gameOverScreen: {},
+  },
 };
-
-// ball object
-const ball = {
-    x: boardWidth / 2,
-    y: boardHeight / 2,
-    width: ballWidth,
-    height: ballHeight,
-    velocityX : ballVelocityX,
-    velocityY: ballVelocityY,
-    color: ballColor,
-}
-
-// block array
-const blocks = {
-    blockStyle: "white",
-    blockArray: [],
-    blockWidth: 50,
-    blockHeight: 10,
-    blockColumns
-}

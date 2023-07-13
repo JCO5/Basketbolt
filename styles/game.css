@@ -1,0 +1,10 @@
+body {
+    text-align: center;
+}
+
+#board {
+    background-color: black;
+    border-top: 10px solid darkorange;
+    border-left: 10px solid darkorange;
+    border-right: 10px solid darkorange;
+}
