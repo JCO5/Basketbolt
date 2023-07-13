@@ -7,14 +7,15 @@ let boardHeight = 800;
 let context;
 
 // PLAYER PADDLE SETTINGS //
-// CHARACTER OBJECTS //
 // SET DIFFICULTIES //
 ////////////////////////////
+// PLAYER PADDLE INITIAL SETTINGS //
 let playerWidth = 150; //1000 for testing, 150 normal
 let playerHeight = 20;
 let playerVelocityX = 10; // start with 10
 let playerColor = "lightgreen";
 
+// BASE DEFAULT PLAYER //
 let player = {
   x: boardWidth / 2 - playerWidth / 2,
   y: boardHeight - playerHeight - 5,
@@ -22,24 +23,62 @@ let player = {
   height: playerHeight,
   velocityX: playerVelocityX,
   color: playerColor,
+  // ballVelocityX: ballSettings.ballVelocityX,
+  // ballVelocityY: ballSettings.ballVelocityY
+};
+
+// CHARACTER OBJECTS //
+///////////////////////
+// PRETTY HARD
+let curry = {
+  // playerWidth +/- x needs to be updated together
+  // as well as playerHeight +/- x
+  name: "curry",
+  x: boardWidth / 2 - (playerWidth - 10) / 2,
+  width: playerWidth - 10,
+  y: boardHeight - (playerHeight + 80) - 5,
+  height: playerHeight + 80,
+  velocityX: playerVelocityX + 40,
+  color: "#ffc809",
+  ballVelocityX: 4,
+  ballVelocityY: -9,
+};
+
+// BIT EASIER THAN CURRY
+let nash = {
+  // playerWidth +/- x needs to be updated together
+  // as well as playerHeight +/- x
+  name: "nash",
+  x: boardWidth / 2 - (playerWidth - 15) / 2,
+  width: playerWidth - 15,
+  y: boardHeight - (playerHeight + 120) - 5,
+  height: playerHeight + 120,
+  velocityX: playerVelocityX + 50,
+  color: "#5c3568",
+  ballVelocityX: 4,
+  ballVelocityY: -9,
 };
 
 // EASY BUT SLOW
 let shaq = {
-  // playerWidth + x needs to be updated together
-  // as well as playerHeight + x
+  // playerWidth +/- x needs to be updated together
+  // as well as playerHeight +/- x
+  name: "shaq",
   x: boardWidth / 2 - (playerWidth + 100) / 2,
   width: playerWidth + 100,
   y: boardHeight - (playerHeight + 200) - 5,
   height: playerHeight + 200,
   velocityX: playerVelocityX + 10,
   color: "#4249ce",
+  ballVelocityX: -3,
+  ballVelocityY: -4,
 };
 
-// MEDIUM 
+// MEDIUM
 let lebron = {
-  // playerWidth + x needs to be updated together
-  // as well as playerHeight + x
+  // playerWidth +/- x needs to be updated together
+  // as well as playerHeight +/- x
+  name: "lebron",
   x: boardWidth / 2 - (playerWidth + 50) / 2,
   width: playerWidth + 50,
   y: boardHeight - (playerHeight + 150) - 5,
@@ -47,63 +86,41 @@ let lebron = {
   velocityX: playerVelocityX + 40,
   color: "#880016",
   ballVelocityX: 4,
-  ballVelocityY: 9,
+  ballVelocityY: -9,
 };
-
-// PRETTY HARD 
-let curry = {
-    // playerWidth + x needs to be updated together
-    // as well as playerHeight + x
-    x: boardWidth / 2 - (playerWidth - 10) / 2,
-    width: playerWidth - 10,
-    y: boardHeight - (playerHeight + 80) - 5,
-    height: playerHeight + 80,
-    velocityX: playerVelocityX + 40,
-    color: "#ffc809",
-    ballVelocityX: 4,
-    ballVelocityY: 9,
-};
-
-// BIT EASIER THAN CURRY
-let nash = {
-  // playerWidth + x needs to be updated together
-  // as well as playerHeight + x
-  x: boardWidth / 2 - (playerWidth - 15) / 2,
-  width: playerWidth - 15,
-  y: boardHeight - (playerHeight + 120) - 5,
-  height: playerHeight + 120,
-  velocityX: playerVelocityX + 50,
-  color: "#5c3568",
-};
-
 
 // GAME OBJECT //
 /////////////////
 let game = {
-  resetPlayer: shaq,
-  activePlayer: { ...shaq },
+  playerName: undefined,
+  resetPlayer: undefined,
+  // *** an initial player object must be declared, or else settings cannot be initialized
+  activePlayer: { ...player },
+  // Instantiate a reset ball
+  resetBall: undefined,
 };
-
 
 // BALL SETTINGS //
 // SET DIFFICULTIES //
 //////////////////////
-let ballWidth = 20;
-let ballHeight = 20;
-let ballVelocityX = -3; //15 for testing, 4 normal
-let ballVelocityY = 4; //10 for testing, 2 normal
-let ballColor = "orange";
+
+let ballSettings = {
+  ballWidth: 20,
+  ballHeight: 20,
+  ballVelocityX: -3, //15 for testing, 4 normal
+  ballVelocityY: -4, //10 for testing, 2 normal
+  ballColor: "orange",
+};
 
 let ball = {
-    x: boardWidth / 2 - ballWidth / 2,
-    y: game.activePlayer.y - ballHeight,
-    width: ballWidth,
-    height: ballHeight,
-    velocityX: ballVelocityX,
-    velocityY: ballVelocityY,
-    color: ballColor,
+  x: boardWidth / 2 - ballSettings.ballWidth / 2,
+  y: undefined,
+  width: ballSettings.ballWidth,
+  height: ballSettings.ballHeight,
+  velocityX: ballSettings.ballVelocityX,
+  velocityY: ballSettings.ballVelocityY,
+  color: ballSettings.ballColor,
 };
-let resetBall = {...ball}
 
 // BLOCK ARRAY SETTINGS //
 //////////////////////////
@@ -126,9 +143,9 @@ let blocks = {
 let score = 0;
 let gameOver = false;
 
-// SET UP GAME PIECES ON LOAD //
+// SET UP GAME PIECES //
 ////////////////////////////////
-window.onload = function () {
+function drawBoard() {
   board = document.getElementById("board");
   board.height = boardHeight;
   board.width = boardWidth;
@@ -148,7 +165,7 @@ window.onload = function () {
 
   // create blocks
   createBlocks();
-};
+}
 
 /* 
 UPDATE FUNCTION - DRAWING/REFRESHING CANVAS, DETECTING COLLISION,
@@ -344,22 +361,22 @@ function detectCollision(a, b) {
 }
 
 function topCollision(ball, block) {
-  //a is above b (ball is above block)
+  // if ball is above block
   return detectCollision(ball, block) && ball.y + ball.height >= block.y;
 }
 
 function bottomCollision(ball, block) {
-  //a is above b (ball is below block)
+  // if ball is below block
   return detectCollision(ball, block) && block.y + block.height >= ball.y;
 }
 
 function leftCollision(ball, block) {
-  //a is left of b (ball is left of block)
+  // if ball is left of block
   return detectCollision(ball, block) && ball.x + ball.width >= block.x;
 }
 
 function rightCollision(ball, block) {
-  //a is right of b (ball is right of block)
+  // if ball is right of block
   return detectCollision(ball, block) && block.x + block.width >= ball.x;
 }
 ///////////////////////////////////
@@ -369,9 +386,23 @@ function rightCollision(ball, block) {
 function resetGame() {
   gameOver = false;
   game.activePlayer = { ...game.resetPlayer };
-  ball = {...resetBall}
+  console.log({ ...game.resetBall });
+  ball = { ...game.resetBall };
   blocks.blockArray = [];
   blocks.blockRows = 3;
   score = 0;
   createBlocks();
 }
+
+export {
+  drawBoard,
+  ball,
+  ballSettings,
+  game,
+  curry,
+  nash,
+  lebron,
+  shaq,
+};
+
+// drawBoard();
