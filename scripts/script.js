@@ -97,12 +97,16 @@ let screen = {
     });
 
     screen.startScreen.exitBtn.on("click", () => {
+      // switch screens
       $("#splash-screen").show();
       $("#game-screen").hide();
+      // clear player name input
       screen.startScreen.playerNameInput.val("");
+      // clear character select
       for(let input of screen.startScreen.characters){
         input.checked = false;
       }
+      
     });
   },
 

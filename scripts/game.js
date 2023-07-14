@@ -97,6 +97,7 @@ let shaq = {
 // GAME OBJECT //
 /////////////////
 let game = {
+  board: $('#board'),
   playerName: undefined,
   resetPlayer: undefined,
   // *** an initial player object must be declared, or else settings cannot be initialized
