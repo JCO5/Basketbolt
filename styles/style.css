@@ -10,7 +10,6 @@ body {
 }
 
 /* logo styling */
-
 .logo {
     font-family: 'Caprasimo', cursive;
     color: rgb(255, 149, 0);
@@ -22,7 +21,11 @@ body {
     transition: color 230ms cubic-bezier(0.1, 0.7, 1.0, 0.1);
     -webkit-text-stroke-width: 2.5px ;
     -webkit-text-stroke-color: rgb(0, 0, 255);
-    margin-top: 0;
+    
+}
+
+h1 {
+  margin-top: 2rem;
 }
 
 .logo:hover {
@@ -80,6 +83,10 @@ body {
 #rules-btn{
   margin-bottom: 1rem;
 }
+
+#mute-btn {
+  margin-bottom: 1rem;
+}
 /* input */
 #name-input {
   margin-bottom: 2rem;
@@ -126,4 +133,42 @@ input[type="radio"]:checked + label {
   border-left: 10px solid darkorange;
   border-right: 10px solid darkorange;
   box-shadow: rgba(0, 0, 0, 0.658) 0px 22px 70px 4px;
+}
+
+/* TABLE STYLING */
+
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  display: table;
+  border-collapse: separate;
+  padding-bottom: 4rem;
+  
+}
+
+table {
+  margin-bottom: 2rem;
+  height: 25rem;
+}
+
+th {
+  text-align: left;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  background-color: #ffffff;
+  font-size: 1.25rem;
+}
+
+td {
+  color: white;
+  background-color: rgb(255, 170, 0);
+  font-weight: bold;
+}
+
+td,
+th {
+  padding: 0.5rem;
 }

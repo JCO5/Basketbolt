@@ -22,6 +22,10 @@ let screen = {
     playBtn: $("#play-btn"),
     rulesBtn: $("#rules-btn"),
     characters: $("#player-select > input"),
+    muteUnmuteBtn: $("#mute-btn"),
+    creditsBtn: $("#credits-btn"),
+    musicAudio: $("#music"),
+    isAudioRunning: true,
   },
   gameScreen: $("#game-screen"),
   gameOverScreen: {},
@@ -35,6 +39,15 @@ let screen = {
       name.css({
         border: "0",
       });
+
+      
+    });
+
+    screen.mute();
+
+    screen.startScreen.creditsBtn.on("click", () => {
+        $("#splash-screen").hide();
+        $("#credits-wrapper").show();
     });
 
     screen.startScreen.playBtn.on("click", () => {
@@ -49,6 +62,7 @@ let screen = {
         "active:",
         game.activePlayer
       );
+
       // Handle empty name and character entries //
       if (!game.playerName) {
         screen.entryInvalid("name");
@@ -72,6 +86,24 @@ let screen = {
       }
     });
   },
+  
+ 
+  // Toggle Music on Splash Screen 
+    mute: function() {
+    
+    screen.startScreen.muteUnmuteBtn.on('click', function() {
+      if (screen.startScreen.isAudioRunning) {
+        screen.startScreen.musicAudio[0].pause();
+        screen.startScreen.muteUnmuteBtn.text('Unmute');
+        screen.startScreen.isAudioRunning = false;
+      } else {
+        screen.startScreen.musicAudio[0].play();
+        screen.startScreen.muteUnmuteBtn.text('Mute');
+        screen.startScreen.isAudioRunning = true;
+      }
+    });
+  },
+  
 
   // Helper Function: Save selected character
   setCharacter: function () {
