@@ -1,56 +1,53 @@
 /* general styling */
 
-
 .hidden {
   display: none;
 }
 
 body {
-  font-family: 'Caprasimo', cursive;
+  font-family: "Caprasimo", cursive;
 }
 
 /* logo styling */
 
 .logo {
-    font-family: 'Caprasimo', cursive;
-    color: rgb(255, 149, 0);
-    font-size: 5rem;
-    background-color: rgb(0, 0, 0);
-    padding: 3rem;
-    border-radius: 1rem;
-    border: .5rem solid darkorange;
-    transition: color 230ms cubic-bezier(0.1, 0.7, 1.0, 0.1);
-    -webkit-text-stroke-width: 2.5px ;
-    -webkit-text-stroke-color: rgb(0, 0, 255);
-    margin-top: 0;
+  font-family: "Caprasimo", cursive;
+  color: rgb(255, 149, 0);
+  font-size: 5rem;
+  background-color: rgb(0, 0, 0);
+  padding: 3rem;
+  border-radius: 1rem;
+  border: 0.5rem solid darkorange;
+  transition: color 230ms cubic-bezier(0.1, 0.7, 1, 0.1);
+  -webkit-text-stroke-width: 2.5px;
+  -webkit-text-stroke-color: rgb(0, 0, 255);
+  margin-top: 0;
 }
 
 .logo:hover {
-    color: rgb(0, 0, 0);
-
+  color: rgb(0, 0, 0);
 }
 
 a {
-    color: none;
-    text-decoration-line: none;
+  color: none;
+  text-decoration-line: none;
 }
 
 /* body */
 
 body {
-    background-image: url("../media/hardwood.jpeg");
-    background-color: black;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-  }
+  background-image: url("../media/hardwood.jpeg");
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
 /* splash-screen */
-#splash-screen  {
+#splash-screen {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -62,23 +59,29 @@ body {
 }
 /* buttons */
 .btn {
-    width: 150px;
-    margin: auto;
-    padding: 8px 0;
-    background-color: black;
-    color: white;
-    border: 2px solid black;
-  }
-  
+  width: 150px;
+  margin: auto;
+  padding: 8px 0;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+}
+
 #play-btn,
 #rules-btn {
-  font-family: 'Caprasimo', cursive;
+  font-family: "Caprasimo", cursive;
 }
-#play-btn{
+#play-btn {
   margin-bottom: 1rem;
 }
-#rules-btn{
+#rules-btn {
   margin-bottom: 1rem;
+}
+#exit-btn {
+  display: none;
+  background-color: darkorange;
+  width: 300px;
+  font-size: 1.5rem;
 }
 /* input */
 #name-input {
@@ -126,4 +129,10 @@ input[type="radio"]:checked + label {
   border-left: 10px solid darkorange;
   border-right: 10px solid darkorange;
   box-shadow: rgba(0, 0, 0, 0.658) 0px 22px 70px 4px;
+}
+
+h2#start{
+  color: darkorange;
+  text-shadow: 0 0 1rem rgb(0, 0, 0);
+  margin: 1rem auto;
 }

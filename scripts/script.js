@@ -22,6 +22,7 @@ let screen = {
     playBtn: $("#play-btn"),
     rulesBtn: $("#rules-btn"),
     characters: $("#player-select > input"),
+    exitBtn: $("#exit-btn"),
   },
   gameScreen: $("#game-screen"),
   gameOverScreen: {},
@@ -62,13 +63,45 @@ let screen = {
         $("#game-screen").show();
         // set ball position
         ball.y = game.activePlayer.y - ballSettings.ballHeight;
-        ball.velocityX = game.activePlayer.ballVelocityX;
-        ball.velocityY = game.activePlayer.ballVelocityY;
+        ball.velocityX = 0;
+        ball.velocityY = 0;
+        // log ball properties - debugging purposes
         console.log({ ...ball });
         // draw board
         drawBoard();
-        // save initial ball settings to the game
-        game.resetBall = { ...ball };
+
+        // initial player velocity is 0 to prevent movement before game starts
+        game.activePlayer.velocityX = 0;
+
+        console.log(game.activePlayer)
+
+        // WHEN PLAYER PRESSES ENTER AND GAME STARTS 
+        document.addEventListener("keypress", startGame);
+        function startGame(e) {
+          if (e.key == 'Enter') {
+            // Hide message, and show exit button
+            $('#start').hide();
+            screen.startScreen.exitBtn.css("display", "inline");
+            // activate ball movement
+            ball.velocityX = game.activePlayer.ballVelocityX;
+            ball.velocityY = game.activePlayer.ballVelocityY;
+            // save the initial ball settings to game
+            game.resetBall = {...ball};
+            game.activePlayer.velocityX = game.activePlayer.setVelocityX;
+            console.log(game.activePlayer);
+            // clear 'enter' key event listener
+            document.removeEventListener("keypress", startGame);
+          }
+        }
+      }
+    });
+
+    screen.startScreen.exitBtn.on("click", () => {
+      $("#splash-screen").show();
+      $("#game-screen").hide();
+      screen.startScreen.playerNameInput.val("");
+      for(let input of screen.startScreen.characters){
+        input.checked = false;
       }
     });
   },

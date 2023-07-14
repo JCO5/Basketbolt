@@ -21,7 +21,8 @@ let player = {
   y: boardHeight - playerHeight - 5,
   width: playerWidth,
   height: playerHeight,
-  velocityX: playerVelocityX,
+  velocityX: 0,
+  setVelocityX: playerVelocityX,
   color: playerColor,
   // ballVelocityX: ballSettings.ballVelocityX,
   // ballVelocityY: ballSettings.ballVelocityY
@@ -39,6 +40,7 @@ let curry = {
   y: boardHeight - (playerHeight + 80) - 5,
   height: playerHeight + 80,
   velocityX: playerVelocityX + 40,
+  setVelocityX: playerVelocityX + 40,
   color: "#ffc809",
   ballVelocityX: 4,
   ballVelocityY: -9,
@@ -54,7 +56,24 @@ let nash = {
   y: boardHeight - (playerHeight + 120) - 5,
   height: playerHeight + 120,
   velocityX: playerVelocityX + 50,
+  setVelocityX: playerVelocityX + 50,
   color: "#5c3568",
+  ballVelocityX: 4,
+  ballVelocityY: -9,
+};
+
+// MEDIUM
+let lebron = {
+  // playerWidth +/- x needs to be updated together
+  // as well as playerHeight +/- x
+  name: "lebron",
+  x: boardWidth / 2 - (playerWidth + 50) / 2,
+  width: playerWidth + 50,
+  y: boardHeight - (playerHeight + 150) - 5,
+  height: playerHeight + 150,
+  velocityX: playerVelocityX + 40,
+  setVelocityX: playerVelocityX + 40,
+  color: "#880016",
   ballVelocityX: 4,
   ballVelocityY: -9,
 };
@@ -69,24 +88,10 @@ let shaq = {
   y: boardHeight - (playerHeight + 200) - 5,
   height: playerHeight + 200,
   velocityX: playerVelocityX + 10,
+  setVelocityX: playerVelocityX + 10,
   color: "#4249ce",
   ballVelocityX: -3,
   ballVelocityY: -4,
-};
-
-// MEDIUM
-let lebron = {
-  // playerWidth +/- x needs to be updated together
-  // as well as playerHeight +/- x
-  name: "lebron",
-  x: boardWidth / 2 - (playerWidth + 50) / 2,
-  width: playerWidth + 50,
-  y: boardHeight - (playerHeight + 150) - 5,
-  height: playerHeight + 150,
-  velocityX: playerVelocityX + 40,
-  color: "#880016",
-  ballVelocityX: 4,
-  ballVelocityY: -9,
 };
 
 // GAME OBJECT //
@@ -161,8 +166,9 @@ function drawBoard() {
   );
 
   requestAnimationFrame(update);
+  console.log("ACTIVATE PLAYER KEYS");
   document.addEventListener("keydown", movePlayer);
-
+  console.log("BOARD DRAWN");
   // create blocks
   createBlocks();
 }
@@ -386,23 +392,12 @@ function rightCollision(ball, block) {
 function resetGame() {
   gameOver = false;
   game.activePlayer = { ...game.resetPlayer };
-  console.log({ ...game.resetBall });
   ball = { ...game.resetBall };
   blocks.blockArray = [];
   blocks.blockRows = 3;
   score = 0;
   createBlocks();
+  console.log(ball)
 }
 
-export {
-  drawBoard,
-  ball,
-  ballSettings,
-  game,
-  curry,
-  nash,
-  lebron,
-  shaq,
-};
-
-// drawBoard();
+export { drawBoard, ball, ballSettings, game, curry, nash, lebron, shaq };
