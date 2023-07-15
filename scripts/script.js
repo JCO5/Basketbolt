@@ -42,15 +42,24 @@ let screen = {
       name.css({
         border: "0",
       });
-
-      
     });
 
-    screen.mute();
+    // Audio 
+    screen.startScreen.muteUnmuteBtn.on("click", function () {
+      if (screen.startScreen.isAudioRunning) {
+        screen.startScreen.musicAudio[0].pause();
+        screen.startScreen.muteUnmuteBtn.text("Unmute");
+        screen.startScreen.isAudioRunning = false;
+      } else {
+        screen.startScreen.musicAudio[0].play();
+        screen.startScreen.muteUnmuteBtn.text("Mute");
+        screen.startScreen.isAudioRunning = true;
+      }
+    });
 
     screen.startScreen.creditsBtn.on("click", () => {
-        $("#splash-screen").hide();
-        $("#credits-wrapper").show();
+      $("#splash-screen").hide();
+      $("#credits-wrapper").show();
     });
 
     // screen.startScreen.playBtn.on("click", () => {
@@ -83,11 +92,11 @@ let screen = {
         screen.entryInvalid("character");
       }
       if (game.playerName && game.resetPlayer && game.activePlayer) {
-          // if required game values are fulfilled, switch to game screen
-          $("#splash-screen").hide();
-          $("#game-screen").show();
-          // set ball position
-          ball.y = game.activePlayer.y - ballSettings.ballHeight;
+        // if required game values are fulfilled, switch to game screen
+        $("#splash-screen").hide();
+        $("#game-screen").show();
+        // set ball position
+        ball.y = game.activePlayer.y - ballSettings.ballHeight;
         ball.velocityX = game.activePlayer.ballVelocityX;
         ball.velocityY = game.activePlayer.ballVelocityY;
         console.log({ ...ball });
@@ -97,31 +106,13 @@ let screen = {
         game.resetBall = { ...ball };
         const nameValue = screen.startScreen.playerNameInput.value;
         if (nameValue !== "") {
-            screen.gameScreen.name = nameValue;
-            screen.gameScreen.playerName.textContent = screen.gameScreen.name;
-            $("#name-display").show();
+          screen.gameScreen.name = nameValue;
+          screen.gameScreen.playerName.textContent = screen.gameScreen.name;
+          $("#name-display").show();
         }
       }
     });
   },
-  
- 
-  // Toggle Music on Splash Screen 
-    mute: function() {
-    
-    screen.startScreen.muteUnmuteBtn.on('click', function() {
-      if (screen.startScreen.isAudioRunning) {
-        screen.startScreen.musicAudio[0].pause();
-        screen.startScreen.muteUnmuteBtn.text('Unmute');
-        screen.startScreen.isAudioRunning = false;
-      } else {
-        screen.startScreen.musicAudio[0].play();
-        screen.startScreen.muteUnmuteBtn.text('Mute');
-        screen.startScreen.isAudioRunning = true;
-      }
-    });
-  },
-  
 
   // Helper Function: Save selected character
   setCharacter: function () {
