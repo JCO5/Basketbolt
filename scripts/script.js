@@ -45,7 +45,7 @@ let screen = {
       });
     });
 
-    // Audio 
+    // MUTE/UNMUTE AUDIO BUTTON 
     screen.startScreen.muteUnmuteBtn.on("click", function () {
       if (screen.startScreen.isAudioRunning) {
         screen.startScreen.musicAudio[0].pause();
@@ -58,20 +58,13 @@ let screen = {
       }
     });
 
+    // CREDITS BUTTON
     screen.startScreen.creditsBtn.on("click", () => {
       $("#splash-screen").hide();
       $("#credits-wrapper").show();
     });
 
-    // screen.startScreen.playBtn.on("click", () => {
-    //     const nameValue = screen.startScreen.playerNameInput.value;
-    //     if (nameValue !== "") {
-    //         screen.gameScreen.name = nameValue;
-    //         screen.gameScreen.playerName.textContent = screen.gameScreen.name;
-    //         $("#name-display").show();
-    //     }
-    // });
-
+    // "LET'S PLAY" BUTTON
     screen.startScreen.playBtn.on("click", () => {
       screen.setCharacter();
       screen.setName();
@@ -87,6 +80,11 @@ let screen = {
         // if required game values are fulfilled, switch to game screen
         $("#splash-screen").hide();
         $("#game-screen").show();
+
+        // display player name
+        $("#name-display").text('GO '+game.playerName+'!');
+        $("#name-display").show();
+
         // set ball position
         ball.y = game.activePlayer.y - ballSettings.ballHeight;
         ball.velocityX = 0;
@@ -130,14 +128,6 @@ let screen = {
       // clear character select
       for (let input of screen.startScreen.characters) {
         input.checked = false;
-        // save initial ball settings to the game
-        game.resetBall = { ...ball };
-        const nameValue = screen.startScreen.playerNameInput.value;
-        if (nameValue !== "") {
-          screen.gameScreen.name = nameValue;
-          screen.gameScreen.playerName.textContent = screen.gameScreen.name;
-          $("#name-display").show();
-        }
       }
     });
   },

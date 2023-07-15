@@ -17,9 +17,11 @@ body {
 .logo {
     font-family: 'Caprasimo', cursive;
     color: rgb(255, 149, 0);
-    font-size: 5rem;
+    font-size: 2rem;
     background-color: rgb(0, 0, 0);
-    padding: 3rem;
+
+    margin-bottom: 2rem;
+    padding: 1rem;
     border-radius: 1rem;
     border: .5rem solid darkorange;
     transition: color 230ms cubic-bezier(0.1, 0.7, 1.0, 0.1);
@@ -28,16 +30,11 @@ body {
     
 }
 
-h1 {
-  margin-top: 2rem;
-}
-
 .logo:hover {
   color: rgb(0, 0, 0);
 }
 
 a {
-  color: none;
   text-decoration-line: none;
 }
 
@@ -119,6 +116,7 @@ body {
   background-color: darkorange;
   width: 300px;
   font-size: 1.5rem;
+  margin: 1rem auto;
 }
 /* input */
 #name-input {
@@ -169,8 +167,8 @@ input[type="radio"]:checked + label {
 #game-screen{
   display: none;
 }
-.name-display {
-  font-size: 2rem;
+#name-display {
+  font-size: 3rem;
 }
 
 #board {
