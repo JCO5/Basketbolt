@@ -3,7 +3,7 @@
 // BOARD SETTINGS
 let board;
 let boardWidth = 1000;
-let boardHeight = 800;
+let boardHeight = 600;
 let context;
 
 // PLAYER PADDLE SETTINGS //

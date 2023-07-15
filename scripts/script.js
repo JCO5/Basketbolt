@@ -23,8 +23,15 @@ let screen = {
     rulesBtn: $("#rules-btn"),
     characters: $("#player-select > input"),
     exitBtn: $("#exit-btn"),
+    muteUnmuteBtn: $("#mute-btn"),
+    creditsBtn: $("#credits-btn"),
+    musicAudio: $("#music"),
+    isAudioRunning: true,
   },
-  gameScreen: $("#game-screen"),
+  gameScreen: {
+    playerName: $("#name-display"),
+    name: "",
+  },
   gameOverScreen: {},
 
   // RUN GAME //
@@ -37,6 +44,33 @@ let screen = {
         border: "0",
       });
     });
+
+    // Audio 
+    screen.startScreen.muteUnmuteBtn.on("click", function () {
+      if (screen.startScreen.isAudioRunning) {
+        screen.startScreen.musicAudio[0].pause();
+        screen.startScreen.muteUnmuteBtn.text("Unmute");
+        screen.startScreen.isAudioRunning = false;
+      } else {
+        screen.startScreen.musicAudio[0].play();
+        screen.startScreen.muteUnmuteBtn.text("Mute");
+        screen.startScreen.isAudioRunning = true;
+      }
+    });
+
+    screen.startScreen.creditsBtn.on("click", () => {
+      $("#splash-screen").hide();
+      $("#credits-wrapper").show();
+    });
+
+    // screen.startScreen.playBtn.on("click", () => {
+    //     const nameValue = screen.startScreen.playerNameInput.value;
+    //     if (nameValue !== "") {
+    //         screen.gameScreen.name = nameValue;
+    //         screen.gameScreen.playerName.textContent = screen.gameScreen.name;
+    //         $("#name-display").show();
+    //     }
+    // });
 
     screen.startScreen.playBtn.on("click", () => {
       screen.setCharacter();
@@ -96,6 +130,14 @@ let screen = {
       // clear character select
       for (let input of screen.startScreen.characters) {
         input.checked = false;
+        // save initial ball settings to the game
+        game.resetBall = { ...ball };
+        const nameValue = screen.startScreen.playerNameInput.value;
+        if (nameValue !== "") {
+          screen.gameScreen.name = nameValue;
+          screen.gameScreen.playerName.textContent = screen.gameScreen.name;
+          $("#name-display").show();
+        }
       }
     });
   },

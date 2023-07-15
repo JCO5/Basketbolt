@@ -40,7 +40,6 @@
           placeholder="Player! Enter your name"
         />
         <!-- player select -->
-        <!-- https://alcreed.tumblr.com/ images source -->
         <div id="player-select" class="radio-players">
           <p>Select Player:</p>
           <input type="radio" name="player" id="curry" value="curry" />
@@ -100,16 +99,24 @@
         <button id="play-btn" type="button" class="btn btn-light btn">
           Let's Play
         </button>
-        <!-- rules btn -->
-        <button
-          id="rules-btn"
-          type="button"
-          class="btn btn-warning btn"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          Rules
-        </button>
+        <div id="aux-btns">
+            <!-- rules btn -->
+            <button
+            id="rules-btn"
+            type="button"
+            class="btn btn-warning btn"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            >
+            Rules
+            </button>
+            <!-- mute btn -->
+            <button id="mute-btn" type="button" class="btn btn-warning btn">Mute</button>
+            <!-- credits btn -->
+            <button id="credits-btn" type="button" class="btn btn-success btn">Credits</button>
+        </div>
+        <!-- audio file -->
+        <audio id="music" autoplay loop src="media/nba-theme.mp3"></audio>
         <!-- modal code -->
         <div
           class="modal fade"
@@ -136,10 +143,9 @@
 
                 Rules of the game are simple: <br />
                 Choose one of four NBA Legends<br />
-                Choose your difficulty - the harder the difficulty, the better
-                the score multiplier.<br />
+                Choose your player - each player has a different difficulty.<br />
                 Start playing!<br />
-                - Move NBA Player using your keyboard<br />
+                - Move NBA Player using your keyboard with the left and right arrow keys<br />
                 - Score as many points as possible within the time limit<br />
                 - Enjoy!<br />
               </div>
@@ -158,6 +164,7 @@
         <!-- end modal code -->
       </div>
       <div id="game-screen">
+        <p id="name-display"></p>
         <canvas id="board"></canvas>
         <a href=""
           ><button id="exit-btn" type="button" class="btn btn-light btn">
@@ -166,7 +173,39 @@
         </a>
         <h2 id="start">Press Enter To Start Game!</h2>
       </div>
-      <div class="hidden" id="game-over-screen"></div>
+      <div class="hidden" id="credits-wrapper">
+        <section class="main-credits-text">
+            <h1 class="text-header-credits">Credits</h1>
+            <section class="credits-table-wrapper">
+                <table class="credits-table">
+                    <thead class="credits-thead">
+                        <tr class="credits-tr">
+                            <th>Element</th>
+                            <th>Source</th>
+                        </tr>
+                    </thead>
+                    <tbody class="credits-tbody">
+                        <tr>
+                            <td>Background Music</td>
+                            <td> <a href="https://www.youtube.com/watch?v=h2dYKX8sUsE&pp=ygUWbmJhIG9uIG5iYyA4IGJpdCB0aGVtZQ%3D%3D" target="_blank" rel="noopener noreferrer">Youtube Channel gman1290</a></td>
+                        </tr>
+                        <tr>
+                            <td>NBA Player Sprites</td>
+                            <td> <a href="https://alcreed.tumblr.com/" target="_blank" rel="noopener noreferrer"></a>Al Creed</td>
+                        </tr>
+                        <tr>
+                            <td>Basketbolt Development and Designed by</td>
+                            <td>Andrew Lau and Joaquin Opulencia &copy 2023</td>
+                        </tr>
+                        <tr>
+                            <td>We acknowledge and credit the NBA (National Basketball Association) for their intellectual property and copyrighted material used in accordance with fair use.</td>
+                            <td>NBA</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+      </div>
     </div>
 
     <!-- libraries -->
