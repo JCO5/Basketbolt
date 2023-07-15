@@ -45,7 +45,7 @@ let screen = {
       });
     });
 
-    // MUTE/UNMUTE AUDIO BUTTON 
+    // MUTE/UNMUTE AUDIO BUTTON
     screen.startScreen.muteUnmuteBtn.on("click", function () {
       if (screen.startScreen.isAudioRunning) {
         screen.startScreen.musicAudio[0].pause();
@@ -82,7 +82,7 @@ let screen = {
         $("#game-screen").show();
 
         // display player name
-        $("#name-display").text('GO '+game.playerName+'!');
+        $("#name-display").text("GO " + game.playerName + "!");
         $("#name-display").show();
 
         // set ball position
@@ -121,8 +121,8 @@ let screen = {
       $("#splash-screen").show();
       $("#game-screen").hide();
       // toggle bottom display
-      $('#start').show()
-      screen.startScreen.exitBtn.hide()
+      $("#start").show();
+      screen.startScreen.exitBtn.hide();
       // clear player name input
       screen.startScreen.playerNameInput.val("");
       // clear character select
