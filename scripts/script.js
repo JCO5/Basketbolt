@@ -27,7 +27,10 @@ let screen = {
     musicAudio: $("#music"),
     isAudioRunning: true,
   },
-  gameScreen: $("#game-screen"),
+  gameScreen: {
+    playerName: $("#name-display"),
+    name: "",
+  },
   gameOverScreen: {},
 
   // RUN GAME //
@@ -50,6 +53,15 @@ let screen = {
         $("#credits-wrapper").show();
     });
 
+    // screen.startScreen.playBtn.on("click", () => {
+    //     const nameValue = screen.startScreen.playerNameInput.value;
+    //     if (nameValue !== "") {
+    //         screen.gameScreen.name = nameValue;
+    //         screen.gameScreen.playerName.textContent = screen.gameScreen.name;
+    //         $("#name-display").show();
+    //     }
+    // });
+
     screen.startScreen.playBtn.on("click", () => {
       screen.setCharacter();
       screen.setName();
@@ -71,11 +83,11 @@ let screen = {
         screen.entryInvalid("character");
       }
       if (game.playerName && game.resetPlayer && game.activePlayer) {
-        // if required game values are fulfilled, switch to game screen
-        $("#splash-screen").hide();
-        $("#game-screen").show();
-        // set ball position
-        ball.y = game.activePlayer.y - ballSettings.ballHeight;
+          // if required game values are fulfilled, switch to game screen
+          $("#splash-screen").hide();
+          $("#game-screen").show();
+          // set ball position
+          ball.y = game.activePlayer.y - ballSettings.ballHeight;
         ball.velocityX = game.activePlayer.ballVelocityX;
         ball.velocityY = game.activePlayer.ballVelocityY;
         console.log({ ...ball });
@@ -83,6 +95,12 @@ let screen = {
         drawBoard();
         // save initial ball settings to the game
         game.resetBall = { ...ball };
+        const nameValue = screen.startScreen.playerNameInput.value;
+        if (nameValue !== "") {
+            screen.gameScreen.name = nameValue;
+            screen.gameScreen.playerName.textContent = screen.gameScreen.name;
+            $("#name-display").show();
+        }
       }
     });
   },

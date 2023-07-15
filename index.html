@@ -75,20 +75,22 @@
         <button id="play-btn" type="button" class="btn btn-light btn">
           Let's Play
         </button>
-        <!-- rules btn -->
-        <button
-          id="rules-btn"
-          type="button"
-          class="btn btn-warning btn"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          Rules
-        </button>
-        <!-- mute btn -->
-        <button id="mute-btn" type="button" class="btn btn-warning btn">Mute</button>
-        <!-- credits btn -->
-        <button id="credits-btn" type="button" class="btn btn-success btn">Credits</button>
+        <div id="aux-btns">
+            <!-- rules btn -->
+            <button
+            id="rules-btn"
+            type="button"
+            class="btn btn-warning btn"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            >
+            Rules
+            </button>
+            <!-- mute btn -->
+            <button id="mute-btn" type="button" class="btn btn-warning btn">Mute</button>
+            <!-- credits btn -->
+            <button id="credits-btn" type="button" class="btn btn-success btn">Credits</button>
+        </div>
         <!-- audio file -->
         <audio id="music" autoplay loop src="media/nba-theme.mp3"></audio>
         <!-- modal code -->
@@ -138,7 +140,8 @@
         <!-- end modal code -->
       </div>
       <div class="hidden" id="game-screen">
-          <canvas id="board"></canvas>
+          <p id="name-display"></p>
+            <canvas id="board"></canvas>
       </div>
       <div class="hidden" id="credits-wrapper">
         <section class="main-credits-text">
@@ -166,6 +169,7 @@
                         </tr>
                         <tr>
                             <td>We acknowledge and credit the NBA (National Basketball Association) for their intellectual property and copyrighted material used in accordance with fair use.</td>
+                            <td>NBA</td>
                         </tr>
                     </tbody>
                 </table>
