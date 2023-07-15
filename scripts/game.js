@@ -97,7 +97,7 @@ let shaq = {
 // GAME OBJECT //
 /////////////////
 let game = {
-  board: $('#board'),
+  board: $("#board"),
   playerName: undefined,
   resetPlayer: undefined,
   // *** an initial player object must be declared, or else settings cannot be initialized
@@ -167,9 +167,9 @@ function drawBoard() {
   );
 
   requestAnimationFrame(update);
-  console.log("ACTIVATE PLAYER KEYS");
+  // console.log("ACTIVATE PLAYER KEYS");
   document.addEventListener("keydown", movePlayer);
-  console.log("BOARD DRAWN");
+  // console.log("BOARD DRAWN");
   // create blocks
   createBlocks();
 }
@@ -398,7 +398,17 @@ function resetGame() {
   blocks.blockRows = 3;
   score = 0;
   createBlocks();
-  console.log(ball)
+  console.log(ball);
 }
 
-export { drawBoard, ball, ballSettings, game, curry, nash, lebron, shaq };
+export {
+  drawBoard,
+  ball,
+  ballSettings,
+  game,
+  player,
+  curry,
+  nash,
+  lebron,
+  shaq,
+};

@@ -41,15 +41,7 @@ let screen = {
     screen.startScreen.playBtn.on("click", () => {
       screen.setCharacter();
       screen.setName();
-      // debugging
-      console.log(
-        "pname:",
-        game.playerName,
-        "reset:",
-        game.resetPlayer,
-        "active:",
-        game.activePlayer
-      );
+
       // Handle empty name and character entries //
       if (!game.playerName) {
         screen.entryInvalid("name");
@@ -65,30 +57,26 @@ let screen = {
         ball.y = game.activePlayer.y - ballSettings.ballHeight;
         ball.velocityX = 0;
         ball.velocityY = 0;
-        // log ball properties - debugging purposes
-        console.log({ ...ball });
+
         // draw board
         drawBoard();
 
         // initial player velocity is 0 to prevent movement before game starts
         game.activePlayer.velocityX = 0;
 
-        console.log(game.activePlayer)
-
-        // WHEN PLAYER PRESSES ENTER AND GAME STARTS 
+        // WHEN PLAYER PRESSES ENTER AND GAME STARTS
         document.addEventListener("keypress", startGame);
         function startGame(e) {
-          if (e.key == 'Enter') {
+          if (e.key == "Enter") {
             // Hide message, and show exit button
-            $('#start').hide();
-            screen.startScreen.exitBtn.css("display", "inline");
+            $("#start").hide();
+            screen.startScreen.exitBtn.show();
             // activate ball movement
             ball.velocityX = game.activePlayer.ballVelocityX;
             ball.velocityY = game.activePlayer.ballVelocityY;
             // save the initial ball settings to game
-            game.resetBall = {...ball};
+            game.resetBall = { ...ball };
             game.activePlayer.velocityX = game.activePlayer.setVelocityX;
-            console.log(game.activePlayer);
             // clear 'enter' key event listener
             document.removeEventListener("keypress", startGame);
           }
@@ -100,13 +88,15 @@ let screen = {
       // switch screens
       $("#splash-screen").show();
       $("#game-screen").hide();
+      // toggle bottom display
+      $('#start').show()
+      screen.startScreen.exitBtn.hide()
       // clear player name input
       screen.startScreen.playerNameInput.val("");
       // clear character select
-      for(let input of screen.startScreen.characters){
+      for (let input of screen.startScreen.characters) {
         input.checked = false;
       }
-      
     });
   },
 
@@ -114,7 +104,6 @@ let screen = {
   setCharacter: function () {
     let players = screen.startScreen.characters;
     for (let i = 0; i < players.length; i++) {
-      // console.log(players[i].value);
       if (players[i].checked) {
         let player = players[i].value;
         // Set player values according to character selected
@@ -143,7 +132,6 @@ let screen = {
   // Helper Function: Save player name
   setName: function () {
     game.playerName = screen.startScreen.playerNameInput[0].value;
-    console.log(game.playerName);
   },
 
   // Helper Function: Display errors for splash screen
@@ -155,7 +143,6 @@ let screen = {
         "border-radius": "3px",
       });
       name[0].placeholder = "Please enter a name!";
-      console.log("name error");
     } else if (error === "character") {
       // clear any messages first
       $("#player-select > p:first-child + p").remove();

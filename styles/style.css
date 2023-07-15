@@ -8,6 +8,11 @@ body {
   font-family: "Caprasimo", cursive;
 }
 
+.underline{
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
+
 /* logo styling */
 
 .logo {
@@ -89,8 +94,14 @@ body {
   text-align: center;
 }
 
+/* CHARACTER SELECT */
 .radio-players {
   margin-bottom: 1rem;
+}
+.radio-players ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 1rem;
 }
 
 img {
@@ -123,6 +134,9 @@ input[type="radio"]:checked + label {
 
 /* GAME SCREEN */
 /* *********** */
+#game-screen{
+  display: none;
+}
 #board {
   background-color: black;
   border-top: 10px solid darkorange;

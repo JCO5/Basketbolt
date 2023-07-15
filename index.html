@@ -28,7 +28,7 @@
   </head>
   <body>
     <div id="game-container">
-        <!-- SPLASH SCREEN -->
+      <!-- SPLASH SCREEN -->
       <div id="splash-screen">
         <!-- logo -->
         <a href="index.html"><h1 class="logo">basketbolt</h1></a>
@@ -49,10 +49,10 @@
               <img src="media/steph.jpg" />
               <p>Stephen Curry</p>
               <ul>
-                <li>HARD</li>
+                <li class="underline">HARD</li>
                 <li>Ball: Fast</li>
-                <li>Movement: Fast</li>
-                <li>Ball Speed: </li>
+                <li>Speed: 40</li>
+                <li>Size: 60</li>
               </ul>
             </div>
           </label>
@@ -62,10 +62,10 @@
               <img src="media/nash.jpg" />
               <p>Steve Nash</p>
               <ul>
-                <li>MEDIUM</li>
+                <li class="underline">MEDIUM</li>
                 <li>Ball: Fast</li>
-                <li>Movement: Fast</li>
-                <li>Ball Speed: </li>
+                <li>Speed: 50</li>
+                <li>Size: 105</li>
               </ul>
             </div>
           </label>
@@ -75,10 +75,10 @@
               <img src="media/lebron.jpg" />
               <p>Lebron James</p>
               <ul>
-                <li>OK</li>
+                <li class="underline">OK</li>
                 <li>Ball: Fast</li>
-                <li>Movement: Fast</li>
-                <li>Size: 200 </li>
+                <li>Speed: 40</li>
+                <li>Size: 200</li>
               </ul>
             </div>
           </label>
@@ -88,9 +88,9 @@
               <img id="shaq-img" src="media/shaq.jpg" />
               <p>Shaquille O'Neal</p>
               <ul>
-                <li>EASY</li>
+                <li class="underline">EASY</li>
                 <li>Ball: Slow</li>
-                <li>Movement: Slow</li>
+                <li>Speed: 10</li>
                 <li>Size: 300</li>
               </ul>
             </div>
@@ -157,18 +157,17 @@
         </div>
         <!-- end modal code -->
       </div>
-      <div class="hidden" id="game-screen">
-          <canvas id="board"></canvas>
-          <button id="exit-btn" type="button" class="btn btn-light btn">
-           ◀︎ Exit to Menu
+      <div id="game-screen">
+        <canvas id="board"></canvas>
+        <a href=""
+          ><button id="exit-btn" type="button" class="btn btn-light btn">
+            ◀︎ Exit to Menu
           </button>
-          <h2 id="start">
-            Press Enter To Start Game!
-          </h2>
+        </a>
+        <h2 id="start">Press Enter To Start Game!</h2>
       </div>
       <div class="hidden" id="game-over-screen"></div>
     </div>
-
 
     <!-- libraries -->
     <!-- jquery -->
